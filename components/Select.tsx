@@ -48,7 +48,12 @@ export default memo(function Select<
       case "language":
         return <span>{(initialValue as LanguageDefinition).label}</span>;
       case "theme":
-        return <ThemeBubble color={(initialValue as ThemeDefinition).class} />;
+        return (
+          <ThemeBubble
+            color={(initialValue as ThemeDefinition).baseColors[0]}
+          />
+        );
+
       case "font":
         return (
           <span
@@ -79,7 +84,7 @@ export default memo(function Select<
       case "theme":
         return (
           <>
-            <ThemeBubble color={(option as ThemeDefinition).class} />
+            <ThemeBubble color={(option as ThemeDefinition).baseColors[0]} />
             <span className="block truncate">
               {(option as ThemeDefinition).label}
             </span>
